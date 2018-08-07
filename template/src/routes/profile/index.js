@@ -1,9 +1,10 @@
 import { h, Component } from 'preact';
+import {connect} from 'preact-redux';
 import Button from 'preact-material-components/Button';
 import 'preact-material-components/Button/style.css';
 import style from './style';
 
-export default class Profile extends Component {
+class Profile extends Component {
 	state = {
 		time: Date.now(),
 		count: 10
@@ -30,7 +31,7 @@ export default class Profile extends Component {
 	};
 
 	// Note: `user` comes from the URL, courtesy of our router
-	render({ user }, { time, count }) {
+	render({ user }, { time }) {
 		return (
 			<div class={style.profile}>
 				<h1>Profile: {user}</h1>
@@ -41,9 +42,17 @@ export default class Profile extends Component {
 				<p>
 					<Button raised ripple onClick={this.increment}>Click Me</Button>
 					{' '}
-					Clicked {count} times.
+					Clicked {props.reducer.count} times.
 				</p>
 			</div>
 		);
 	}
 }
+
+
+
+export default connect((state) =>
+  ({
+    reducer: state.reducer
+  })
+)(Profile);
