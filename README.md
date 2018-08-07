@@ -1,8 +1,8 @@
-# preact-material-boilerplate
+# preact-material-dux-boilerplate
 
 ## Documentation
 
-- This is a material template for [preact-cli](https://github.com/developit/preact-cli) using [preact-material-components](https://github.com/prateekbh/preact-material-components).
+- This is a material and redux template for [preact-cli](https://github.com/developit/preact-cli) using [preact-material-components](https://github.com/prateekbh/preact-material-components).
 - [For Preact](https://preactjs.com/): General information about how to work with Preact, not specific to this template
 
 ## Usage
