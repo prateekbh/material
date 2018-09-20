@@ -1,9 +1,11 @@
-import { h, Component } from 'preact';
+import { Component } from 'preact';
 import { Router } from 'preact-router';
+import { Provider } from 'preact-redux';
+import Store from './store';
 
 import Header from './header';
 import Home from '../routes/home';
-import Profile from '../routes/profile';
+import Demo from '../routes/demo';
 // import Home from 'async!../routes/home';
 // import Profile from 'async!../routes/profile';
 
@@ -18,14 +20,15 @@ export default class App extends Component {
 
 	render() {
 		return (
-			<div id="app">
-				<Header />
-				<Router onChange={this.handleRoute}>
-					<Home path="/" />
-					<Profile path="/profile/" user="me" />
-					<Profile path="/profile/:user" />
-				</Router>
-			</div>
+			<Provider store={Store}>
+				<div id="app">
+					<Header />
+					<Router onChange={this.handleRoute}>
+						<Home path="/" />
+						<Demo path="/demo" />
+					</Router>
+				</div>
+			</Provider>
 		);
 	}
 }

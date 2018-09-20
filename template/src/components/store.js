@@ -1,21 +1,16 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux';
+import * as reducers from '../reducers/';
 import { createLogger } from 'redux-logger';
-import * as reducers from '../reducers';
 
-const reducer = storage.reducer(combineReducers(reducers));
-const logger = createLogger({
-  predicate: (getState, action) => action.type !== false
-});
+const reducer = combineReducers(reducers);
+const logger = createLogger({});
 
 let middlewares = [];
-
-if (process.env.NODE_ENV === `development`) {
-  middlewares.push(logger);
-}
+!process.env.NODE_ENV === 'production' && middlewares.push(logger);
 
 const store = createStore(
-  reducer,
-  applyMiddleware(...middlewares)
+	reducer,
+	applyMiddleware(...middlewares)
 );
 
 export default store;

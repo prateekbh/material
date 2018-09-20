@@ -1,6 +1,6 @@
 import { h, Component } from 'preact';
 import { route } from 'preact-router';
-import Toolbar from 'preact-material-components/Toolbar';
+import TopAppBar from 'preact-material-components/TopAppBar';
 import Drawer from 'preact-material-components/Drawer';
 import List from 'preact-material-components/List';
 import Dialog from 'preact-material-components/Dialog';
@@ -9,7 +9,8 @@ import 'preact-material-components/Switch/style.css';
 import 'preact-material-components/Dialog/style.css';
 import 'preact-material-components/Drawer/style.css';
 import 'preact-material-components/List/style.css';
-import 'preact-material-components/Toolbar/style.css';
+import 'preact-material-components/TopAppBar/style.css';
+
 // import style from './style';
 
 export default class Header extends Component {
@@ -33,7 +34,7 @@ export default class Header extends Component {
 	};
 
 	goHome = this.linkTo('/');
-	goToMyProfile = this.linkTo('/profile');
+	goToDemo = this.linkTo('/demo');
 
 	toggleDarkTheme = () => {
 		this.setState(
@@ -54,28 +55,28 @@ export default class Header extends Component {
 	render() {
 		return (
 			<div>
-				<Toolbar className="toolbar">
-					<Toolbar.Row>
-						<Toolbar.Section align-start>
-							<Toolbar.Icon menu onClick={this.openDrawer}>
+				<TopAppBar className="toolbar">
+					<TopAppBar.Row>
+						<TopAppBar.Section align-start>
+							<TopAppBar.Icon menu onClick={this.openDrawer}>
 								menu
-							</Toolbar.Icon>
-							<Toolbar.Title>Preact app</Toolbar.Title>
-						</Toolbar.Section>
-						<Toolbar.Section align-end onClick={this.openSettings}>
-							<Toolbar.Icon>settings</Toolbar.Icon>
-						</Toolbar.Section>
-					</Toolbar.Row>
-				</Toolbar>
+							</TopAppBar.Icon>
+							<TopAppBar.Title>Preact app</TopAppBar.Title>
+						</TopAppBar.Section>
+						<TopAppBar.Section align-end onClick={this.openSettings}>
+							<TopAppBar.Icon>settings</TopAppBar.Icon>
+						</TopAppBar.Section>
+					</TopAppBar.Row>
+				</TopAppBar>
 				<Drawer.TemporaryDrawer ref={this.drawerRef}>
 					<Drawer.DrawerContent>
 						<Drawer.DrawerItem onClick={this.goHome}>
 							<List.ItemGraphic>home</List.ItemGraphic>
 							Home
 						</Drawer.DrawerItem>
-						<Drawer.DrawerItem onClick={this.goToMyProfile}>
+						<Drawer.DrawerItem onClick={this.goToDemo}>
 							<List.ItemGraphic>account_circle</List.ItemGraphic>
-							Profile
+							Demo
 						</Drawer.DrawerItem>
 					</Drawer.DrawerContent>
 				</Drawer.TemporaryDrawer>
